@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BedrockBank
 {
-    class Account 
+   public class Account 
     {
         /// <summary>
         /// This class provides 
@@ -36,15 +36,33 @@ namespace BedrockBank
         /// <summary>
         /// Balance in the account
         /// </summary>
-        public decimal Balance { get; set; }
+        public decimal Balance {
+            get;
+            private set; }
+
+        public int SSN { get; set; }
         #endregion
 
         #region Constructors
 
+        //Deafault Constructor
         public Account()
         {
             //lastAccountNumber = lastAccountNumber + 1;
             Account = ++lastAccountNumber
+        }
+
+        public Account(string name)
+            :this()
+        {
+           this.Name = name;
+        }
+
+        public Account(string name, decimal amount)
+            :this(name)
+        {
+            //Name = name;
+            Deposit(amount);
         }
         #endregion
 
